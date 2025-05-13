@@ -1,0 +1,6 @@
+torch
+transformers
+gluonnlp
+tqdm
+flask
+sentencepiece

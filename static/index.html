@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Turkish Lyrics Translator</title>
+  </head>
+  <body>
+    <h1>Translate Turkish Lyrics</h1>
+    <textarea id="inputText" placeholder="Enter Turkish Lyrics..."></textarea>
+    <button onclick="translate()">Translate</button>
+    <p id="output"></p>
+
+    <script>
+      function translate() {
+        const text = document.getElementById('inputText').value;
+        fetch('http://127.0.0.1:5000/translate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text })
+        })
+          .then(response => response.json())
+          .then(data => {
+            document.getElementById('output').innerText = data.translation;
+          });
+      }
+    </script>
+  </body>
+</html>
